@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 
 
-# funtion to replace NaNs  with string 'NULL' in dataframe
 def replace_nan(dataframe):
     ''' Return the dataframe by replacing NaN with string NULL.  '''
 
@@ -10,4 +9,5 @@ def replace_nan(dataframe):
 
 
 def remove_erroneous_column(dataframe, err_col_no):
+    ''' '''
     print('removing erroneous column from dataframe')

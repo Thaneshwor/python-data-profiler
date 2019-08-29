@@ -20,13 +20,15 @@ def is_date(date):
 
     if type(date) == str:
         return check_date_format(date)
+
+
         # for strptime_format in formats:
         #     try:
         #        return datetime.datetime.strptime(date, strptime_format)
         #     except ValueError:
         #       pass
-
-    return False
+check_date_format
+return False
 
 
 def check_date_format(date):
