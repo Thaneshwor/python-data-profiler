@@ -1,8 +1,11 @@
 from prettytable import PrettyTable
 
 
-# function to print columns
 def display_columns(headers):
+    '''
+    Display columns header
+
+    '''
     index = 0
     pt = PrettyTable()
     pt.field_names = ['index', 'Available Column']
@@ -12,8 +15,10 @@ def display_columns(headers):
     print(pt)
 
 
-# funtion to print all column having and their datatypes
 def display_columns_datatype(column_unique_data_type, column_headings):
+    '''
+    Print all column and datatype available 
+    '''
     index = 0
     print('*******************************************************************')
     print(' Columns  and their datatype Available:')
@@ -26,8 +31,10 @@ def display_columns_datatype(column_unique_data_type, column_headings):
     print(pt)
 
 
-# function to display actual datatype of columns
 def display_columns_actual_datatype(actual_datatype_of_column):
+    '''
+    Print Actual datatype of columns
+    '''
     print('********************************* Actual data type of column  **********************************')
     index = 0
     pt = PrettyTable()
@@ -38,8 +45,10 @@ def display_columns_actual_datatype(actual_datatype_of_column):
     print(pt)
 
 
-# function to display erroneousColumn and their datatypes
 def display_erroneous_columns(erroneousColumn):
+    '''
+    Print erroneous column and datatype available
+    '''
     print('********************************* Erroneous Columns  **********************************')
     index = 0
     pt = PrettyTable()
@@ -51,10 +60,12 @@ def display_erroneous_columns(erroneousColumn):
 
     print(pt)
 
-# function to display erroneous columns and their datatypes with line number
-
 
 def display_erroneous_informatioin(erroneous_Column_Information):
+    '''
+    Print erroneous columns and their datatypes and line number
+
+    '''
     print('**********************************Erroneous Column Information*********************************')
     index = 0
     pt = PrettyTable()
