@@ -21,25 +21,35 @@ python setup.py install
 ~~~
 
 
-###How to run :###
+###How to run :
 1. Open Terminal
 2. Nevigate to folder having main.py
 3. Run program by python3 main.py (path)filename
 
 
-###Input###
+###Input
 **Input csv file**
 ![](images/csv.jpg)
 
-###Output###
+###Output
+
 **Column headers**
+
 ![](images/column_headers.jpg)
+
 **Columns and their available datatypes**
+
 ![](images/column_datatypes.jpg)
+
 **Actual datatype of columns**
+
 ![](images/column_datatypes.jpg)
+
 **Erroneous column with datatypes**
+
 ![](images/err_column_datatypes.jpg)
+
 **Erroneous column with row numbers and datatypes**
+
 ![](images/err_row_no.jpg)
 
