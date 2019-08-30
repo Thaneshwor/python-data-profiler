@@ -181,7 +181,7 @@ def add_unique_datatype(row, column_heading, column_unique_data_type):
     dtype_cell = None
 
     if column_heading in column_unique_data_type:
-        dtype_cell = 'NULL' if row[column_heading] == 'NULL' else get_datatype(
+        dtype_cell = None if row[column_heading] == 'NULL' else get_datatype(
             row[column_heading])
 
         if dtype_cell in datatype and datatype[dtype_cell] not in column_unique_data_type[column_heading]:
