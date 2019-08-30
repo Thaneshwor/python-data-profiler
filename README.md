@@ -23,9 +23,16 @@ python setup.py install
 
 ### How to run :
 
-1. Open Terminal
-2. Nevigate to folder having main.py
-3. Run program by python3 main.py (path)filename
+
+ Run program by typing:
+
+~~~ `python3 main.py (path)filename`
+
+    example:
+
+    `python3 main.py example.csv`
+
+~~~
 
 
 ### Input
@@ -45,7 +52,7 @@ python setup.py install
 
 **Actual datatype of columns**
 
-![](images/column_datatypes.jpg)
+![](images/actual_datatypes.jpg)
 
 **Erroneous column with datatypes**
 
