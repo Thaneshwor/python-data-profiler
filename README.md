@@ -21,13 +21,15 @@ python setup.py install
 ~~~
 
 
-###How to run :
+### How to run :
+
 1. Open Terminal
 2. Nevigate to folder having main.py
 3. Run program by python3 main.py (path)filename
 
 
-###Input
+### Input
+
 **Input csv file**
 ![](images/csv.jpg)
 
