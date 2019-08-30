@@ -1,8 +1,6 @@
 import re
 import datetime
 
-# check if input parameter is date
-
 
 def is_date(date):
     ''' Return true if input parameter is date. '''
