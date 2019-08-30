@@ -21,13 +21,15 @@ def substring_after(s, delim):
     return s.partition(delim)[2]
 
 
-# need to complete
 def write_to_file(name):
-    ''' write to csv file after removing error rows '''
-    print('writing to file........')
+    ''' 
+    write to csv file after removing error rows 
+    TODO: need to complete
+
+    '''
+    print('')
 
 
-# function to find file type
 def find_file_type(file_name):
     ''' Return type of file. '''
     ext = substring_after(file_name, '.')
