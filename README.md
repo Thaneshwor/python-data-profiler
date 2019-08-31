@@ -24,13 +24,13 @@ python setup.py install
 ### How to run :
 
 
- Run program by typing:
+ Run program as:
 
 ~~~
 
-    `python3 main.py (path)filename`
+    python3 main.py $(path_to_file)
 
-    example:
+    Example:
 
     python3 main.py example.csv
 
