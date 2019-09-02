@@ -15,7 +15,7 @@ from utils.profile.display import display_erroneous_columns
 from utils.profile.display import display_erroneous_informatioin
 from utils.profile.display import display_columns_actual_datatype
 from utils.profile.display import display_columns_datatype
-from utils.fileoperation import write_to_file
+from utils.fileoperation import generate_report
 
 
 def profileData(file_name):
@@ -50,6 +50,8 @@ def profileData(file_name):
     display_data_profile(column_unique_data_type, column_headings,
                          actual_datatype_of_column, erroneousColumn, erroneous_Column_Information)
 
+    generate_report(column_headings, column_unique_data_type)
+
 
 # function to print profilled data
 def display_data_profile(column_unique_data_type, column_headings, actual_datatype_of_column, erroneousColumn, erroneous_Column_Information):
@@ -61,5 +63,3 @@ def display_data_profile(column_unique_data_type, column_headings, actual_dataty
     display_columns_actual_datatype(actual_datatype_of_column)
     display_erroneous_columns(erroneousColumn)
     display_erroneous_informatioin(erroneous_Column_Information)
-
-    write_to_file(column_headings, column_unique_data_type)
