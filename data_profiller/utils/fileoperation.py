@@ -4,7 +4,7 @@ import itertools
 import sys
 
 
-def read_file(file_name):
+def get_dataframe(file_name):
     ''' Return dataframe of file after reading it. '''
 
     file_type = find_file_type(file_name)
@@ -19,23 +19,14 @@ def read_file(file_name):
         print('File Error Please provide csv, fwf, tsv or fwf(txt)')
 
 
-def substring_after(s, delim):
+def get_file_extension(s, delim):
     ''' Return file extension . '''
     return s.partition(delim)[2]
 
 
-def generate_report(fields, column_unique_data_type):
-    '''
-    Generate report
-    TODO: need to complete
-    '''
-    write_headers(fields)
-    write_col_datatypes(fields, column_unique_data_type)
-
-
 def find_file_type(file_name):
     ''' Return type of file. '''
-    ext = substring_after(file_name, '.')
+    ext = get_file_extension(file_name, '.')
 
     if ext == 'csv':
 
@@ -55,32 +46,3 @@ def find_file_type(file_name):
         return 'txt_fwf'
 
     return 'file_error'
-
-
-def write_headers(fields):
-    fields.insert(0, '***************Fields***************')
-    print('writing to file')
-
-    with open('test_output.csv', 'w', newline='') as myfile:
-        wr = csv.writer(myfile, delimiter='\n')
-        wr.writerow(fields)
-
-
-def write_col_datatypes(csv_columns, dict_data):
-    '''
-        Write Fields and their available datatypes in csv file.
-
-    '''
-    dict_list = []
-    dict_list.insert(0, ['***************Fields***************',
-                         '***************Datatypes***************'])
-    for key, value in dict_data.items():
-        temp = [key, value]
-        dict_list.append(temp)
-
-    dict_data.update(Fields='Datatypes')
-
-    with open('test_output.csv', 'a',  newline='') as f:
-        wr = csv.writer(f)
-        for value in dict_list:
-            wr.writerow(value)
