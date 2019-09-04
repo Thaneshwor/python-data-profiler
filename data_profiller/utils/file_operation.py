@@ -32,7 +32,7 @@ def find_file_type(file_name):
         file_type = find_seperator(file_name)
 
         if file_type == ',':
-            'csv'
+            return 'csv'
 
         elif file_type == '\t':
             return 'tsv'
