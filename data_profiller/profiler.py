@@ -10,7 +10,7 @@ from utils.data_collection import get_datatype_line_num
 from utils.data_collection import count_data_type_in_each_column
 from utils.data_collection import get_actual_datatype_of_columns
 from utils.erroneous_data import get_erroneous_column
-from utils.erroneous_data import get_erroneous_line_information
+from utils.erroneous_data import get_erroneous_information
 from utils.profile.display import display_erroneous_columns
 from utils.profile.display import display_erroneous_informatioin
 from utils.profile.display import display_columns_actual_datatype
@@ -20,6 +20,7 @@ from utils.profile.display import display_columns_datatype
 def profileData(file_name):
 
     # collect data
+
     dataframe = get_dataframe(file_name)
 
     column_headings = get_headers(dataframe)
@@ -45,7 +46,7 @@ def profileData(file_name):
     # function to return erroneous column having more then one datatype
     erroneousColumn = get_erroneous_column(column_unique_data_type)
     # function to return erroneous row number and erroneous column row number
-    erroneous_row_no, erroneous_Column_Information = get_erroneous_line_information(
+    erroneous_row_no, erroneous_Column_Information = get_erroneous_information(
         dataframe, column_datatype_line)
 
     # print data profile

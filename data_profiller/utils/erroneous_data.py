@@ -10,7 +10,7 @@ def get_erroneous_column(column_unique_data_type):
 
 
 # function to return erroneous row no. and  erroneous column information
-def get_erroneous_line_information(df, column_datatype_line):
+def get_erroneous_information(df, column_datatype_line):
 
     erroneous_information = {}
     erroneous_row_no = []
