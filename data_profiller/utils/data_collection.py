@@ -1,18 +1,20 @@
+
+
 from utils.date import is_date
 
 datatype = {
-    int: 'integer',
-    float: 'float',
-    str: 'string',
+    'integer': 'integer',
+    'float': 'float',
+    'string': 'string',
     None: 'None',
     'date': 'date'
 }
 
 
-def get_headings(data_frame):
+def get_headers(dataframe):
     ''' Return the heading of columns present in dataframe. '''
 
-    return list(data_frame.columns.values)
+    return list(dataframe.columns.values)
 
 
 def count_data_type_in_each_column(col_data_type_info, heading):
@@ -101,14 +103,15 @@ def get_datatype(cell_value):
             if is_date(cell_value):
                 dtype_cell = 'date'
             else:
-                dtype_cell = type(str(cell_value))
+                dtype_cell = 'string'
+                if '.' in cell_value:
+                    dtype_cell = 'float'
 
-                dtype_cell = type(float(cell_value)) if '.' in cell_value else type(
-                    int(cell_value))
+                if int(cell_value):
+                    dtype_cell = 'integer'
 
         except:
             pass
-
     return dtype_cell
 
 
@@ -174,7 +177,7 @@ def get_unique_data_type(df, heading):
 def add_unique_datatype(row, column_heading, column_unique_data_type):
     '''
 
-    Return dicitionary after added datatype if previously not present in input dictionary (column_unique_data_type). 
+    Return dicitionary after add datatype if previously not present in input dictionary (column_unique_data_type). 
 
     '''
 

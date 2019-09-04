@@ -1,4 +1,10 @@
+import sys
+
 from prettytable import PrettyTable
+from utils.logger import setup_logger
+
+
+output_logger = setup_logger('output_logger', 'output.log')
 
 
 def display_columns(headers):
@@ -13,11 +19,13 @@ def display_columns(headers):
         index = index+1
         pt.add_row([index, column])
     print(pt)
+    output_logger.info('Columns header in file')
+    output_logger.info(pt)
 
 
-def display_columns_datatype(column_unique_data_type, column_headings):
+def display_columns_datatype(column_unique_data_type):
     '''
-    Print all column and datatype available 
+    Print all column and datatype available
     '''
     index = 0
     print('*******************************************************************')
@@ -29,6 +37,8 @@ def display_columns_datatype(column_unique_data_type, column_headings):
         index = index+1
         pt.add_row([index, k, len(v), v])
     print(pt)
+    output_logger.info('Datatypes available in each column ')
+    output_logger.info(pt)
 
 
 def display_columns_actual_datatype(actual_datatype_of_column):
@@ -43,6 +53,8 @@ def display_columns_actual_datatype(actual_datatype_of_column):
         index = index + 1
         pt.add_row([index, k, v])
     print(pt)
+    output_logger.info('Main datatype of column')
+    output_logger.info(pt)
 
 
 def display_erroneous_columns(erroneousColumn):
@@ -52,13 +64,14 @@ def display_erroneous_columns(erroneousColumn):
     print('********************************* Erroneous Columns  **********************************')
     index = 0
     pt = PrettyTable()
-    pt.field_names = ['Index', 'Column', 'Datatype']
+    pt.field_names = ['Index', 'Column', 'Available Datatypes']
 
     for k, v in erroneousColumn.items():
         index = index + 1
         pt.add_row([index, k, v])
-
     print(pt)
+    output_logger.info('Erroneous columns present in file')
+    output_logger.info(pt)
 
 
 def display_erroneous_informatioin(erroneous_Column_Information):
@@ -75,5 +88,6 @@ def display_erroneous_informatioin(erroneous_Column_Information):
         for k1, v1 in v.items():
             index = index + 1
             pt.add_row([index, k, k1, v1])
-
     print(pt)
+    output_logger.info('Erroneous columns and their line numbers')
+    output_logger.info(pt)
