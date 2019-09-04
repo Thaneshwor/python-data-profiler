@@ -29,8 +29,14 @@ def find_file_type(file_name):
     ext = get_file_extension(file_name, '.')
 
     if ext == 'csv':
+        file_type = find_seperator(file_name)
 
-        df = pd.read_csv(file_name, delimiter=',')
+        if file_type == ',':
+            'csv'
+
+        elif file_type == '\t':
+            return 'tsv'
+
         if len(df.columns) > 1:
             print('CSV File')
             return 'csv'
@@ -46,3 +52,16 @@ def find_file_type(file_name):
         return 'txt_fwf'
 
     return 'file_error'
+
+
+def find_seperator(filename):
+    with open(filename, 'r') as myCsvfile:
+        header = myCsvfile.readline()
+        if header.find(";") != -1:
+            return ";"
+        if header.find(",") != -1:
+            return ","
+        if header.find("\t") != -1:
+            return "\t"
+    # default delimiter (MS Office export)
+    return ";"

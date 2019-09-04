@@ -1,9 +1,11 @@
+
+
 from utils.date import is_date
 
 datatype = {
-    int: 'integer',
-    float: 'float',
-    str: 'string',
+    'integer': 'integer',
+    'float': 'float',
+    'string': 'string',
     None: 'None',
     'date': 'date'
 }
@@ -101,13 +103,15 @@ def get_datatype(cell_value):
             if is_date(cell_value):
                 dtype_cell = 'date'
             else:
-                dtype_cell = type(str(cell_value))
                 dtype_cell = 'string'
-                dtype_cell = 'float' if '.' in cell_value else 'int'
+                if '.' in cell_value:
+                    dtype_cell = 'float'
+
+                if int(cell_value):
+                    dtype_cell = 'integer'
 
         except:
             pass
-
     return dtype_cell
 
 

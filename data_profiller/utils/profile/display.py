@@ -1,6 +1,6 @@
 from prettytable import PrettyTable
 import sys
-
+import logging
 # log = open("myprog.log", "a")
 # sys.stdout = log
 
@@ -19,7 +19,7 @@ def display_columns(headers):
     print(pt)
 
 
-def display_columns_datatype(column_unique_data_type, column_headings):
+def display_columns_datatype(column_unique_data_type):
     '''
     Print all column and datatype available 
     '''

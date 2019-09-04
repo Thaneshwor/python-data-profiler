@@ -1,7 +1,7 @@
 import pandas as pd
 
 from utils.cleanser import replace_nan
-from utils.fileoperation import get_dataframe
+from utils.file_operation import get_dataframe
 from utils.data_collection import get_headers
 from utils.profile.display import display_columns
 from utils.data_collection import datatypes_in_column
@@ -15,25 +15,27 @@ from utils.profile.display import display_erroneous_columns
 from utils.profile.display import display_erroneous_informatioin
 from utils.profile.display import display_columns_actual_datatype
 from utils.profile.display import display_columns_datatype
-# from utils.fileoperation import generate_report
 
 
 def profileData(file_name):
 
     # collect data
     dataframe = get_dataframe(file_name)
-    # get column headings
+
     column_headings = get_headers(dataframe)
-    # remove NaN values from data frame
+
     dataframe = replace_nan(dataframe)
     # get column datatype information
     column_datatype_information = datatypes_in_column(
         dataframe, column_headings)
+
     # return  how many datatype are present in which column
     column_datatype_count = count_data_type_in_each_column(
         column_datatype_information, column_headings)
+
     # return which datatype is present at which line
     column_datatype_line = get_datatype_line_num(dataframe, column_headings)
+
     # return column and their unique datatype
     column_unique_data_type = get_unique_data_type(
         dataframe, column_headings)
@@ -59,7 +61,7 @@ def display_data_profile(column_unique_data_type, column_headings, actual_dataty
 
     display_columns(column_headings)
     display_columns_datatype(
-        column_unique_data_type, column_headings)
+        column_unique_data_type)
     display_columns_actual_datatype(actual_datatype_of_column)
     display_erroneous_columns(erroneousColumn)
     display_erroneous_informatioin(erroneous_Column_Information)
