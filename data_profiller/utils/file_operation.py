@@ -11,7 +11,7 @@ def get_dataframe(file_name):
 
     if file_type == 'csv':
         return pd.read_csv(file_name, delimiter=',', low_memory=False)
-    elif file_type == 'fwf' or file_type == 'txt_fwf':
+    elif file_type == 'fwf':
         return pd.read_fwf(file_name, low_memory=False)
     elif file_type == 'tsv':
         return pd.read_csv(file_name, sep='\t', low_memory=False)
@@ -36,20 +36,12 @@ def find_file_type(file_name):
 
         elif file_type == '\t':
             return 'tsv'
-
-        if len(df.columns) > 1:
-            print('CSV File')
-            return 'csv'
         else:
             print('Fixed Width File(CSV)')
             return 'fwf'
-    elif ext == 'tsv':
+    elif ext == 'tsv' or ext == 'txt':
         print('TSV File')
         return 'tsv'
-
-    elif ext == 'txt':
-        print('Fixed Width File(txt)')
-        return 'txt_fwf'
 
     return 'file_error'
 

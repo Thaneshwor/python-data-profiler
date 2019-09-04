@@ -1,8 +1,5 @@
 from prettytable import PrettyTable
 import sys
-import logging
-# log = open("myprog.log", "a")
-# sys.stdout = log
 
 
 def display_columns(headers):
