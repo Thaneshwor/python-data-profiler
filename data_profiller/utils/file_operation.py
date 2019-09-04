@@ -13,6 +13,8 @@ def get_dataframe(file_name):
     else:
         df = pd.read_csv(file_name, sep=fs, low_memory=False)
 
+    df = replace_nan(df)
+
     return df
 
 

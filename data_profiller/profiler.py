@@ -1,6 +1,5 @@
 import pandas as pd
 
-from utils.cleanser import replace_nan
 from utils.file_operation import get_dataframe
 from utils.data_collection import get_headers
 from utils.profile.display import display_columns
@@ -25,7 +24,6 @@ def profileData(file_name):
 
     column_headings = get_headers(dataframe)
 
-    dataframe = replace_nan(dataframe)
     # get column datatype information
     column_datatype_information = datatypes_in_column(
         dataframe, column_headings)
