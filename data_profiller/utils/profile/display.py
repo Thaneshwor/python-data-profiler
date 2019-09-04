@@ -1,9 +1,10 @@
-from prettytable import PrettyTable
 import sys
-import logging
 
-logging.basicConfig(level=logging.DEBUG, filename='output.log',
-                    format='%(asctime)s  \n\r%(message)s', datefmt='%Y/%m/%d %H:%M:%S')
+from prettytable import PrettyTable
+from utils.logger import setup_logger
+
+
+output_logger = setup_logger('output_logger', 'output.log')
 
 
 def display_columns(headers):
@@ -18,8 +19,8 @@ def display_columns(headers):
         index = index+1
         pt.add_row([index, column])
     print(pt)
-    logging.info('All column headers in file')
-    logging.info(pt)
+    output_logger.info('Columns header in file')
+    output_logger.info(pt)
 
 
 def display_columns_datatype(column_unique_data_type):
@@ -36,8 +37,8 @@ def display_columns_datatype(column_unique_data_type):
         index = index+1
         pt.add_row([index, k, len(v), v])
     print(pt)
-    logging.info('Datatypes available in each column ')
-    logging.info(pt)
+    output_logger.info('Datatypes available in each column ')
+    output_logger.info(pt)
 
 
 def display_columns_actual_datatype(actual_datatype_of_column):
@@ -52,8 +53,8 @@ def display_columns_actual_datatype(actual_datatype_of_column):
         index = index + 1
         pt.add_row([index, k, v])
     print(pt)
-    logging.info('Main datatype of column')
-    logging.info(pt)
+    output_logger.info('Main datatype of column')
+    output_logger.info(pt)
 
 
 def display_erroneous_columns(erroneousColumn):
@@ -69,8 +70,8 @@ def display_erroneous_columns(erroneousColumn):
         index = index + 1
         pt.add_row([index, k, v])
     print(pt)
-    logging.info('Erroneous columns present in file')
-    logging.info(pt)
+    output_logger.info('Erroneous columns present in file')
+    output_logger.info(pt)
 
 
 def display_erroneous_informatioin(erroneous_Column_Information):
@@ -88,5 +89,5 @@ def display_erroneous_informatioin(erroneous_Column_Information):
             index = index + 1
             pt.add_row([index, k, k1, v1])
     print(pt)
-    logging.info('Erroneous columns and their line numbers')
-    logging.info(pt)
+    output_logger.info('Erroneous columns and their line numbers')
+    output_logger.info(pt)
