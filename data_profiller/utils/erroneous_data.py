@@ -31,5 +31,5 @@ def get_erroneous_information(df, column_datatype_line):
                     else:
                         erroneous_information[k][k1].extend(v1)
                 erroneous_row_no.extend(v1)
-    print(erroneous_information)
+
     return erroneous_row_no, erroneous_information

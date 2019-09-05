@@ -120,8 +120,7 @@ def isInt(val):
 
 
 def get_datatype(cell_value):
-    print(type(cell_value))
-    ''' Return datatype of input parameter in string formate'''
+    '''Return datatype of input parameter in string formate'''
 
     if cell_value == 'NULL':
         dtype_cell = None
