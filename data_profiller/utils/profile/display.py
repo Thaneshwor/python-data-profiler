@@ -45,10 +45,10 @@ def display_columns_actual_datatype(actual_datatype_of_column):
     '''
     Print Actual datatype of columns
     '''
-    print('********************************* Actual data type of column  **********************************')
+    print('********************************* Maximum number of data types in column  **********************************')
     index = 0
     pt = PrettyTable()
-    pt.field_names = ['Index', 'Column', 'Actual Datatype']
+    pt.field_names = ['Index', 'Column', 'Maximum Datatype']
     for k, v in actual_datatype_of_column.items():
         index = index + 1
         pt.add_row([index, k, v])
