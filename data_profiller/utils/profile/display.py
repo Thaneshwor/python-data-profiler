@@ -32,10 +32,17 @@ def display_columns_datatype(column_unique_data_type):
     print(' Columns  and their datatype Available:')
     pt = PrettyTable()
     pt.field_names = ['index', 'Column',
-                      'no. of datatypes available', 'datatypes']
+                      'no. of datatypes available', 'datatypes', 'is nullable']
     for k, v in column_unique_data_type.items():
         index = index+1
-        pt.add_row([index, k, len(v), v])
+        temp_v = v
+        is_nullable = False
+
+        if 'None' in v:
+            temp_v.remove('None')
+            is_nullable = True
+
+        pt.add_row([index, k, len(v), temp_v, is_nullable])
     print(pt)
     output_logger.info('Datatypes available in each column ')
     output_logger.info(pt)
