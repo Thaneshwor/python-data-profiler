@@ -68,7 +68,12 @@ def display_erroneous_columns(erroneousColumn):
 
     for k, v in erroneousColumn.items():
         index = index + 1
-        pt.add_row([index, k, v])
+        temp_v = v
+
+        if 'None' in temp_v:
+            temp_v.remove('None')
+
+        pt.add_row([index, k, temp_v])
     print(pt)
     output_logger.info('Erroneous columns present in file')
     output_logger.info(pt)
@@ -87,7 +92,8 @@ def display_erroneous_informatioin(erroneous_Column_Information):
     for k, v in erroneous_Column_Information.items():
         for k1, v1 in v.items():
             index = index + 1
-            pt.add_row([index, k, k1, v1])
+            if k1 != 'None':
+                pt.add_row([index, k, k1, v1])
     print(pt)
     output_logger.info('Erroneous columns and their line numbers')
     output_logger.info(pt)
