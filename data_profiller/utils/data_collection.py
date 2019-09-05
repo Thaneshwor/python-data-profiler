@@ -93,25 +93,47 @@ def get_init_dictionary(headings):
     return column_datatype_line_no
 
 
+def isFloat(val):
+    '''
+    Return true if input parameter is of type float.
+    '''
+    try:
+        x = float(val)
+        return True
+    except:
+        return False
+
+
+def isInt(val):
+    '''
+    Return true if input parameter is of type integer.
+    '''
+    if '.' in str(val):
+        return False
+
+    try:
+
+        return isinstance(int(float(val)), int)
+
+    except:
+        return False
+
+
 def get_datatype(cell_value):
-    ''' Return datatype of input parameter '''
+    print(type(cell_value))
+    ''' Return datatype of input parameter in string formate'''
 
     if cell_value == 'NULL':
         dtype_cell = None
+    elif is_date(cell_value):
+        dtype_cell = 'date'
+    elif isInt(cell_value):
+        dtype_cell = 'integer'
+    elif isFloat(cell_value):
+        dtype_cell = 'float'
     else:
-        try:
-            if is_date(cell_value):
-                dtype_cell = 'date'
-            else:
-                dtype_cell = 'string'
-                if '.' in cell_value:
-                    dtype_cell = 'float'
+        dtype_cell = 'string'
 
-                if int(cell_value):
-                    dtype_cell = 'integer'
-
-        except:
-            pass
     return dtype_cell
 
 
@@ -136,7 +158,7 @@ def get_actual_datatype_of_columns(column_datatype_at_which_line):
 # return data types of column in  dicitonary
 def datatypes_in_column(dataframe, headings):
     '''
-    Return datatypes of column. 
+    Return datatypes of column.
 
 
     Result:
@@ -177,7 +199,7 @@ def get_unique_data_type(df, heading):
 def add_unique_datatype(row, column_heading, column_unique_data_type):
     '''
 
-    Return dicitionary after add datatype if previously not present in input dictionary (column_unique_data_type). 
+    Return dicitionary after add datatype if previously not present in input dictionary (column_unique_data_type).
 
     '''
 
