@@ -16,7 +16,7 @@ from utils.profile.display import display_columns_actual_datatype
 from utils.profile.display import display_columns_datatype
 
 
-def profileData(file_name):
+def profileData(file_name, json_file_format):
 
     # collect data
 

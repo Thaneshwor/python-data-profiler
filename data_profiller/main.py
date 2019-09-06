@@ -8,7 +8,7 @@ from profiler import profileData
 
 def main(file_name, json_file_format):
     # datafile = 'new.csv'
-    profileData(file_name)
+    profileData(file_name, json_file_format)
 
 
 if __name__ == "__main__":
