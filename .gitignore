@@ -7,8 +7,9 @@ __pycache__/
 *.so
 
 .vscode/
-.csv#
-.tsv#
+.csv
+.tsv
+.~*.*.*#
 
 
 # Distribution / packaging
