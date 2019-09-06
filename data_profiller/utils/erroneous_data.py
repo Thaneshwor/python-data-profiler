@@ -6,6 +6,7 @@ def get_erroneous_column(column_unique_data_type):
     for k, v in column_unique_data_type.items():
         if (len(v) == 2 and 'None' not in v) or len(v) > 2:
             erroneous_column[k] = v
+
     return erroneous_column
 
 

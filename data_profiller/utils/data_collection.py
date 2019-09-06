@@ -98,9 +98,11 @@ def isFloat(val):
     Return true if input parameter is of type float.
     '''
     try:
-        x = float(val)
+        float(val)
+
         return True
     except:
+
         return False
 
 
@@ -109,6 +111,7 @@ def isInt(val):
     Return true if input parameter is of type integer.
     '''
     if '.' in str(val):
+
         return False
 
     try:
@@ -116,6 +119,7 @@ def isInt(val):
         return isinstance(int(float(val)), int)
 
     except:
+
         return False
 
 
@@ -139,6 +143,7 @@ def get_datatype(cell_value):
 # need to improve
 def get_actual_datatype_of_columns(column_datatype_at_which_line):
     ''' Return actual datatype of column. '''
+
     column_datatype = {}
 
     for k, v in column_datatype_at_which_line.items():
@@ -159,12 +164,12 @@ def datatypes_in_column(dataframe, headings):
     '''
     Return datatypes of column.
 
-
     Result:
         {
             'year':['int', 'string'],
             'month':['int', 'string'],
         }
+
     TODO: Something in progress.
     '''
     result = {}
