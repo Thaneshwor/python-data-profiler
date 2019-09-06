@@ -1,4 +1,5 @@
 import csv
+import json
 import pandas as pd
 
 from utils.logger import setup_logger
@@ -47,3 +48,12 @@ def find_seperator(file_name):
         error_logger.error(e)
 
     return "fwf"
+
+
+def get_dict_from_json(file_name):
+    '''
+    Return dictionary after loading data from json file.
+    '''
+    with open(file_name) as f:
+        data = json.load(f)
+    return data
