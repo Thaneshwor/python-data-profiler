@@ -1,6 +1,7 @@
 import pandas as pd
 
 from utils.file_operation import get_dataframe
+from utils.file_operation import get_dict_from_json
 from utils.data_collection import get_headers
 from utils.profile.display import display_columns
 from utils.data_collection import datatypes_in_column
@@ -21,6 +22,8 @@ def profileData(file_name, json_file_format):
     # collect data
 
     dataframe = get_dataframe(file_name)
+
+    file_format = get_dict_from_json(json_file_format)
 
     column_headings = get_headers(dataframe)
 
@@ -49,13 +52,13 @@ def profileData(file_name, json_file_format):
 
     # print data profile
     display_data_profile(column_unique_data_type, column_headings,
-                         actual_datatype_of_column, erroneousColumn, erroneous_Column_Information)
+                         actual_datatype_of_column, erroneousColumn, erroneous_Column_Information, file_format)
 
     # generate_report(column_headings, column_unique_data_type)
 
 
 # function to print profilled data
-def display_data_profile(column_unique_data_type, column_headings, actual_datatype_of_column, erroneousColumn, erroneous_Column_Information):
+def display_data_profile(column_unique_data_type, column_headings, actual_datatype_of_column, erroneousColumn, erroneous_Column_Information, file_format):
     print('************************************** DATA PROFILING **************************************')
 
     display_columns(column_headings)
