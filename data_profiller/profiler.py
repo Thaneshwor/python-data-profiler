@@ -63,7 +63,7 @@ def display_data_profile(column_unique_data_type, column_headings, actual_dataty
 
     display_columns(column_headings)
     display_columns_datatype(
-        column_unique_data_type)
+        column_unique_data_type, file_format)
     display_columns_actual_datatype(actual_datatype_of_column)
     display_erroneous_columns(erroneousColumn)
     display_erroneous_informatioin(erroneous_Column_Information)

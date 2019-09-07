@@ -23,7 +23,7 @@ def display_columns(headers):
     output_logger.info(pt)
 
 
-def display_columns_datatype(column_unique_data_type):
+def display_columns_datatype(column_unique_data_type, file_format):
     '''
     Print all column and datatype available
     '''
