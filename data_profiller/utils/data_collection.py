@@ -127,17 +127,15 @@ def get_datatype(cell_value):
     '''Return datatype of input parameter in string formate'''
 
     if cell_value == 'NULL':
-        dtype_cell = None
+        return None
     elif is_date(cell_value):
-        dtype_cell = 'date'
+        return 'date'
     elif isInt(cell_value):
-        dtype_cell = 'integer'
+        return 'integer'
     elif isFloat(cell_value):
-        dtype_cell = 'float'
-    else:
-        dtype_cell = 'string'
+        return 'float'
 
-    return dtype_cell
+    return 'string'
 
 
 # need to improve
