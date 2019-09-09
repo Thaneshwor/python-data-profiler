@@ -1,11 +1,12 @@
-def get_erroneous_column(column_unique_data_type):
+def get_erroneous_column(file_format, column_unique_data_type):
     '''Return the list of erroneous column having more then one datatype.'''
 
     erroneous_column = {}
 
     for k, v in column_unique_data_type.items():
-        if (len(v) == 2 and 'None' not in v) or len(v) > 2:
-            erroneous_column[k] = v
+        if k in file_format:
+            if file_format[k] not in v:
+                erroneous_column[k] = v
 
     return erroneous_column
 

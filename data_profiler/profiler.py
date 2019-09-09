@@ -45,7 +45,8 @@ def profileData(file_name, json_file_format):
     max_datatype_of_column = get_max_datatype(
         column_datatype_line)
     # function to return erroneous column having more then one datatype
-    erroneousColumn = get_erroneous_column(column_unique_data_type)
+    erroneousColumn = get_erroneous_column(
+        file_format, column_unique_data_type)
     # function to return erroneous row number and erroneous column row number
     erroneous_row_no, erroneous_Column_Information = get_erroneous_information(
         file_format, column_datatype_line)
