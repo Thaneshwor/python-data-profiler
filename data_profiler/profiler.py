@@ -42,7 +42,7 @@ def profileData(file_name, json_file_format):
     column_unique_data_type = get_unique_data_type(
         dataframe, column_headings)
     # function to return actual datatype of column (need to imporove)
-    actual_datatype_of_column = get_max_datatype(
+    max_datatype_of_column = get_max_datatype(
         column_datatype_line)
     # function to return erroneous column having more then one datatype
     erroneousColumn = get_erroneous_column(column_unique_data_type)
@@ -52,18 +52,18 @@ def profileData(file_name, json_file_format):
 
     # print data profile
     display_data_profile(column_unique_data_type, column_headings,
-                         actual_datatype_of_column, erroneousColumn, erroneous_Column_Information, file_format)
+                         max_datatype_of_column, erroneousColumn, erroneous_Column_Information, file_format)
 
     # generate_report(column_headings, column_unique_data_type)
 
 
 # function to print profilled data
-def display_data_profile(column_unique_data_type, column_headings, actual_datatype_of_column, erroneousColumn, erroneous_Column_Information, file_format):
+def display_data_profile(column_unique_data_type, column_headings, max_datatype_of_column, erroneousColumn, erroneous_Column_Information, file_format):
     print('************************************** DATA PROFILING **************************************')
 
     display_columns(column_headings)
     display_columns_datatype(
         column_unique_data_type)
-    display_columns_actual_datatype(actual_datatype_of_column, file_format)
+    display_columns_actual_datatype(max_datatype_of_column, file_format)
     display_erroneous_columns(erroneousColumn)
     display_erroneous_informatioin(erroneous_Column_Information)
