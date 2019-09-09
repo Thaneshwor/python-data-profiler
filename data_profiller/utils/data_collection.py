@@ -1,6 +1,6 @@
 
 
-from data_profiller.utils.date import is_date
+from utils.date import is_date
 
 datatype = {
     'integer': 'integer',
@@ -134,8 +134,8 @@ def get_datatype(cell_value):
         return 'integer'
     elif isFloat(cell_value):
         return 'float'
-
-    return 'string'
+    else:
+        return 'string'
 
 
 # need to improve
