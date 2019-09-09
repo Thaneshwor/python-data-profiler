@@ -149,7 +149,7 @@ def get_max_datatype(column_datatype_at_which_line):
         no_of_time_data_type_occure = 0
 
         for k1, v1 in v.items():
-            if(len(v1) > no_of_time_data_type_occure):
+            if(len(v1) > no_of_time_data_type_occure and k1 != 'None'):
                 data_type = k1
                 no_of_time_data_type_occure = len(v1)
             column_datatype[k] = data_type
