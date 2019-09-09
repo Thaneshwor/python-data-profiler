@@ -12,7 +12,14 @@ def main(file_name, json_file_format):
 
 
 if __name__ == "__main__":
-    file_name = str(sys.argv[1])
-    json_file_format = str(sys.argv[2])
+    try:
+        file_name = str(sys.argv[1])
+    except Exception as e:
+        print('Please provide file path')
+
+    try:
+        json_file_format = str(sys.argv[2])
+    except Exception as e:
+        json_file_format = ''
 
     main(file_name, json_file_format)
