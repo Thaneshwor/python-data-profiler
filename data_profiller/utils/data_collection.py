@@ -93,7 +93,7 @@ def get_init_dictionary(headings):
     return column_datatype_line_no
 
 
-def isFloat(val):
+def is_float(val):
     '''
     Return true if input parameter is of type float.
     '''
@@ -106,7 +106,7 @@ def isFloat(val):
         return False
 
 
-def isInt(val):
+def is_int(val):
     '''
     Return true if input parameter is of type integer.
     '''
