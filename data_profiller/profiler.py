@@ -8,7 +8,7 @@ from utils.data_collection import datatypes_in_column
 from utils.data_collection import get_unique_data_type
 from utils.data_collection import get_datatype_line_num
 from utils.data_collection import count_data_type_in_each_column
-from utils.data_collection import get_actual_datatype_of_columns
+from utils.data_collection import get_max_datatype
 from utils.erroneous_data import get_erroneous_column
 from utils.erroneous_data import get_erroneous_information
 from utils.profile.display import display_erroneous_columns
@@ -42,7 +42,7 @@ def profileData(file_name, json_file_format):
     column_unique_data_type = get_unique_data_type(
         dataframe, column_headings)
     # function to return actual datatype of column (need to imporove)
-    actual_datatype_of_column = get_actual_datatype_of_columns(
+    actual_datatype_of_column = get_max_datatype(
         column_datatype_line)
     # function to return erroneous column having more then one datatype
     erroneousColumn = get_erroneous_column(column_unique_data_type)

@@ -139,7 +139,7 @@ def get_datatype(cell_value):
 
 
 # need to improve
-def get_actual_datatype_of_columns(column_datatype_at_which_line):
+def get_max_datatype(column_datatype_at_which_line):
     ''' Return actual datatype of column. '''
 
     column_datatype = {}
