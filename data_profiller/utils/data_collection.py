@@ -1,6 +1,6 @@
 
 
-from utils.date import is_date
+from data_profiller.utils.date import is_date
 
 datatype = {
     'integer': 'integer',
