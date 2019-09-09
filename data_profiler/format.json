@@ -1,0 +1,22 @@
+{
+	"EmployeeId": "string",
+	"CostCenter": "integer",
+	"CostCenterDesc": "string",
+	"BirthDate": "date",
+	"OriginalHireDate": "date",
+	"LatestHireDate": "date",
+	"IsPerdiem": "string",
+	"LocationCode": "string",
+	"PositionCode": "string",
+	"PositionDesc": "string",
+	"PosStartDate": "date",
+	"YearsOfExp": "float",
+	"Fte": "float",
+	"SupEmployeeId": "string",
+	"MgrEmployeeId": "string",
+	"DirEmployeeId": "string",
+	"TermDate": "date",
+	"TermReason1": "string",
+	"TermReason2": "string"
+}
+
