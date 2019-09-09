@@ -54,6 +54,12 @@ def get_dict_from_json(file_name):
     '''
     Return dictionary after loading data from json file.
     '''
-    with open(file_name) as f:
-        data = json.load(f)
-    return data
+    try:
+        with open(file_name) as f:
+            data = json.load(f)
+        return data
+    except Exception as e:
+        print('Error Can not open ', file_name)
+        error_logger.error(e)
+
+    return {}
