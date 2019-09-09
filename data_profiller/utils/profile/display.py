@@ -55,10 +55,36 @@ def display_columns_actual_datatype(actual_datatype_of_column, file_format):
     print('********************************* Maximum number of data types in column  **********************************')
     index = 0
     pt = PrettyTable()
-    pt.field_names = ['Index', 'Column', 'Maximum Datatype']
-    for k, v in actual_datatype_of_column.items():
-        index = index + 1
-        pt.add_row([index, k, v])
+    if len(file_format) == 0:
+        pt.field_names = ['Index', 'Column', 'Maximum Datatype']
+        for k, v in actual_datatype_of_column.items():
+            index = index + 1
+            pt.add_row([index, k, v])
+    else:
+
+        pt.field_names = ['Index', 'Expected Columns', 'Expected Datatypes',
+                          'Columns Present', 'Maximum Datatype', 'isValid']
+        is_col_valid = 'No'
+
+        for k, v in file_format.items():
+            index = index + 1
+            if k in actual_datatype_of_column:
+                if file_format[k] == actual_datatype_of_column[k]:
+                    is_col_valid = 'Yes'
+                else:
+                    is_col_valid = 'No'
+
+                pt.add_row([index, k, file_format[k], k,
+                            actual_datatype_of_column[k], is_col_valid])
+            else:
+                pt.add_row([index, k, file_format[k], '',
+                            '', is_col_valid])
+
+        for k, v in actual_datatype_of_column.items():
+            index = index + 1
+            if k not in file_format:
+                pt.add_row([index, '', '', k,
+                            actual_datatype_of_column[k], 'No'])
     print(pt)
     output_logger.info('Main datatype of column')
     output_logger.info(pt)
