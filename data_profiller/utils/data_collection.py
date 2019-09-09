@@ -130,9 +130,9 @@ def get_datatype(cell_value):
         return None
     elif is_date(cell_value):
         return 'date'
-    elif isInt(cell_value):
+    elif is_int(cell_value):
         return 'integer'
-    elif isFloat(cell_value):
+    elif is_float(cell_value):
         return 'float'
     else:
         return 'string'
