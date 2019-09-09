@@ -11,15 +11,20 @@ def get_erroneous_column(column_unique_data_type):
 
 
 # function to return erroneous row no. and  erroneous column information
-def get_erroneous_information(df, column_datatype_line):
+def get_erroneous_information(file_format, column_datatype_line):
 
     erroneous_information = {}
     erroneous_row_no = []
 
     for k, v in column_datatype_line.items():
         # need to improve
+        if k in file_format:
+            actual_datatype = file_format[k]
+        else:
+            continue
         for k1, v1 in v.items():
-            if(len(v1) < len(df)/2 and len(v1) > 0):
+
+            if k1 != actual_datatype and len(v1) > 0:
                 if k not in erroneous_information:
                     erroneous_information[k] = {}
                     erroneous_information[k][k1] = []

@@ -48,7 +48,7 @@ def profileData(file_name, json_file_format):
     erroneousColumn = get_erroneous_column(column_unique_data_type)
     # function to return erroneous row number and erroneous column row number
     erroneous_row_no, erroneous_Column_Information = get_erroneous_information(
-        dataframe, column_datatype_line)
+        file_format, column_datatype_line)
 
     # print data profile
     display_data_profile(column_unique_data_type, column_headings,
