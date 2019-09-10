@@ -11,7 +11,10 @@ def get_erroneous_column(file_format, column_unique_data_type):
 
 
 def is_valid_column(column, file_format, datatypes):
+    '''
+    Return True if column is not errorneous else return False.
 
+    '''
     if len(datatypes) == 1 and file_format[column] in datatypes:
         return False
     elif len(datatypes) == 2 and 'None' in datatypes and file_format[column] in datatypes:
