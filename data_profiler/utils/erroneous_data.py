@@ -3,12 +3,21 @@ def get_erroneous_column(file_format, column_unique_data_type):
 
     erroneous_column = {}
 
-    for k, v in column_unique_data_type.items():
-        if k in file_format:
-            if file_format[k] not in v:
-                erroneous_column[k] = v
+    for column, datatypes in column_unique_data_type.items():
+        if is_valid_column(column, file_format, datatypes):
+            erroneous_column[column] = datatypes
 
     return erroneous_column
+
+
+def is_valid_column(column, file_format, datatypes):
+
+    if len(datatypes) == 1 and file_format[column] in datatypes:
+        return False
+    elif len(datatypes) == 2 and 'None' in datatypes and file_format[column] in datatypes:
+        return False
+    else:
+        return True
 
 
 # function to return erroneous row no. and  erroneous column information
