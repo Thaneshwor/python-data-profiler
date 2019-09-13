@@ -5,9 +5,9 @@ Generate reports from csv, tsv, fwf.
 ### For each column :
 1. Print all column headers
 2. Print all datatypes available in each column
-3. Print actual datatype of each column
-4. Print erroneous columns 
-5. Print erroneous columns row number
+3. Print expected columns, expected datatypes, columns presents, maximum datatype, isValid of each column
+4. Print erroneous columns if present
+5. Print erroneous columns row number 
 
 
 
@@ -27,12 +27,15 @@ python setup.py install
  Run program as:
 
 ~~~
-
-    python3 main.py $(path_to_file)
+    python3 main.py $(path_to_file) 
+    or
+    python3 main.py $(path_to_file) $(path_to_format_file)
 
     Example:
 
     python3 main.py example.csv
+    or
+    python3 main.py example.csv format.json
 
 ~~~
 
