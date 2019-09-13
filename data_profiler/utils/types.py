@@ -1,3 +1,5 @@
+''' Type utility functions. '''
+
 import datetime
 
 
