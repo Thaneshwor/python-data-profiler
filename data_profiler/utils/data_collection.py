@@ -1,6 +1,10 @@
-
-
-from utils.date import is_date
+from utils.types import (
+    is_date,
+    is_int,
+    is_float,
+    is_boolean,
+    is_time
+)
 
 datatype = {
     'integer': 'integer',
@@ -91,36 +95,6 @@ def get_init_dictionary(headings):
         column_datatype_line_no[column_heading]['None'] = []
 
     return column_datatype_line_no
-
-
-def is_float(val):
-    '''
-    Return true if input parameter is of type float.
-    '''
-    try:
-        float(val)
-
-        return True
-    except:
-
-        return False
-
-
-def is_int(val):
-    '''
-    Return true if input parameter is of type integer.
-    '''
-    if '.' in str(val):
-
-        return False
-
-    try:
-
-        return isinstance(int(float(val)), int)
-
-    except:
-
-        return False
 
 
 def get_datatype(cell_value):
