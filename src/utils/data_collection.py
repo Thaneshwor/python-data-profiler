@@ -44,6 +44,7 @@ def get_datatype_line_num(df, heading):
         dict = { year: {string:[1, 3, 4, 6], integer:[
             2, 5]}, value: { string:{4, 5, 6}}}
     '''
+
     column_datatype_line_no = get_init_dictionary(heading)
 
     for index, row in df.iterrows():
@@ -54,9 +55,8 @@ def get_datatype_line_num(df, heading):
 
     return column_datatype_line_no
 
+
 # store line no of datatype in each column
-
-
 def store_line_no_of_datatype(row, column_heading, index, column_datatype_line_no):
     ''' Return dictionary (column_datatype_line_no) after adding line number of datatype in each column'''
 
@@ -78,8 +78,6 @@ def store_line_no_of_datatype(row, column_heading, index, column_datatype_line_n
 
     return column_datatype_line_no
 
-
-# name need to be imporved
 
 def get_init_dictionary(headings):
     ''' Return initialized dictionary for storing line number of of datatype  in each column of dataframe. '''
@@ -165,7 +163,6 @@ def get_unique_data_type(df, heading):
 
     for _, row in df.iterrows():
         for column in heading:
-
             result = add_unique_datatype(
                 row, column, result)
 
@@ -174,9 +171,7 @@ def get_unique_data_type(df, heading):
 
 def add_unique_datatype(row, column_heading, column_unique_data_type):
     '''
-
-    Return dicitionary after add datatype if previously not present in input dictionary (column_unique_data_type).
-
+    Return dicitionary after add datatype if previously not present in input dictionary (column_unique_data_type)
     '''
 
     dtype_cell = None

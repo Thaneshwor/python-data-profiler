@@ -2,7 +2,7 @@
 
 Generate reports from csv, tsv, fwf.
 
-### For each column :
+## For each column :
 1. Print all column headers
 2. Print all datatypes available in each column
 3. Print expected columns, expected datatypes, columns presents, maximum datatype, isValid of each column
@@ -12,20 +12,13 @@ Generate reports from csv, tsv, fwf.
 
 
 ## Installation
-
-### From source 
-
 Download the source code by cloning the repository or by pressing 'Download ZIP' on this page. Install by navigating to the proper directory and running
 ~~~
-python setup.py install
+python3 setup.py install
 ~~~
 
 
-### How to run :
-
-
- Run program as:
-
+## How to run :
 ~~~
     python3 main.py $(path_to_file) 
     or
@@ -33,19 +26,16 @@ python setup.py install
 
     Example:
 
-    python3 main.py example.csv
+    python3 ./src/main.py ./src/data/sample.csv
     or
-    python3 main.py example.csv format.json
-
+    python3 ./src/main.py ./src/data/sample.csv ./src/data/sample-format.json
 ~~~
 
 
-### Input
-
-**Input csv file**
+## Input CSV File
 ![](images/csv.jpg)
 
-### Output
+## Output
 
 **Column headers**
 
@@ -66,4 +56,3 @@ python setup.py install
 **Erroneous column with row numbers and datatypes**
 
 ![](images/err_row_no.jpg)
-

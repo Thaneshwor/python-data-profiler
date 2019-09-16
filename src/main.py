@@ -1,9 +1,6 @@
 import sys
 
 from profiler import profileData
-# import pandas as pd
-
-# entry point of program
 
 
 def main(file_name, json_file_format):

@@ -13,8 +13,8 @@ def get_erroneous_column(file_format, column_unique_data_type):
 def is_valid_column(column, file_format, datatypes):
     '''
     Return True if column is errorneous else return False.
-
     '''
+
     try:
         if len(datatypes) == 1 and file_format[column] in datatypes:
             return False

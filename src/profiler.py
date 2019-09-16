@@ -1,26 +1,25 @@
 import pandas as pd
 
-from utils.file_operation import get_dataframe
-from utils.file_operation import get_dict_from_json
 from utils.data_collection import get_headers
+from utils.file_operation import get_dataframe
 from utils.profile.display import display_columns
+from utils.data_collection import get_max_datatype
+from utils.file_operation import get_dict_from_json
+from utils.erroneous_data import get_erroneous_column
 from utils.data_collection import datatypes_in_column
 from utils.data_collection import get_unique_data_type
 from utils.data_collection import get_datatype_line_num
-from utils.data_collection import count_data_type_in_each_column
-from utils.data_collection import get_max_datatype
-from utils.erroneous_data import get_erroneous_column
+from utils.profile.display import display_columns_datatype
 from utils.erroneous_data import get_erroneous_information
 from utils.profile.display import display_erroneous_columns
+from utils.data_collection import count_data_type_in_each_column
 from utils.profile.display import display_erroneous_informatioin
 from utils.profile.display import display_columns_actual_datatype
-from utils.profile.display import display_columns_datatype
 
 
 def profileData(file_name, json_file_format):
 
     # collect data
-
     dataframe = get_dataframe(file_name)
 
     file_format = get_dict_from_json(json_file_format)
@@ -55,12 +54,10 @@ def profileData(file_name, json_file_format):
     display_data_profile(column_unique_data_type, column_headings,
                          max_datatype_of_column, erroneousColumn, erroneous_Column_Information, file_format)
 
-    # generate_report(column_headings, column_unique_data_type)
-
 
 # function to print profilled data
 def display_data_profile(column_unique_data_type, column_headings, max_datatype_of_column, erroneousColumn, erroneous_Column_Information, file_format):
-    print('************************************** DATA PROFILING **************************************')
+    print('************************************** DATA PROFILE **************************************')
 
     display_columns(column_headings)
     display_columns_datatype(
