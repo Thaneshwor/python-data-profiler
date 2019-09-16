@@ -22,7 +22,8 @@ def profileData(file_name, json_file_format):
     # collect data
     dataframe = get_dataframe(file_name)
 
-    file_format = get_dict_from_json(json_file_format)
+    file_format = get_dict_from_json(
+        json_file_format) if len(json_file_format) > 0 else {}
 
     column_headings = get_headers(dataframe)
 
@@ -43,6 +44,7 @@ def profileData(file_name, json_file_format):
     # function to return actual datatype of column (need to imporove)
     max_datatype_of_column = get_max_datatype(
         column_datatype_line)
+
     # function to return erroneous column having more then one datatype
     erroneousColumn = get_erroneous_column(
         file_format, column_unique_data_type)
