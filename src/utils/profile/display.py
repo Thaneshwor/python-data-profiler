@@ -4,7 +4,9 @@ from prettytable import PrettyTable
 from utils.logger import setup_logger
 
 
-output_logger = setup_logger('output_logger', 'output.log')
+message_logger = setup_logger('output_logger', 'output.log', 'message')
+
+table_logger = setup_logger('table_logger', 'output.log', 'table')
 
 
 def display_columns(headers):
@@ -21,8 +23,8 @@ def display_columns(headers):
         pt.add_row([index, column])
 
     print(pt)
-    output_logger.info('Columns header in file')
-    output_logger.info(pt)
+    message_logger.info('Columns header in file')
+    table_logger.info(pt)
 
 
 def display_columns_datatype(column_unique_data_type):
@@ -50,8 +52,8 @@ def display_columns_datatype(column_unique_data_type):
         pt.add_row([index, k, len(v), temp_v, is_nullable])
 
     print(pt)
-    output_logger.info('Datatypes available in each column ')
-    output_logger.info(pt)
+    message_logger.info('Datatypes available in each column ')
+    table_logger.info(pt)
 
 
 def display_columns_actual_datatype(actual_datatype_of_column, file_format):
@@ -93,8 +95,8 @@ def display_columns_actual_datatype(actual_datatype_of_column, file_format):
                             actual_datatype_of_column[k], 'No'])
 
     print(pt)
-    output_logger.info('Main datatype of column')
-    output_logger.info(pt)
+    message_logger.info('Main datatype of column')
+    table_logger.info(pt)
 
 
 def display_erroneous_columns(erroneousColumn):
@@ -119,10 +121,10 @@ def display_erroneous_columns(erroneousColumn):
             pt.add_row([index, k, temp_v])
 
         print(pt)
-        output_logger.info('Erroneous columns present in file')
-        output_logger.info(pt)
+        message_logger.info('Erroneous columns present in file')
+        table_logger.info(pt)
     else:
-        output_logger.info('No erroneous columns present in file')
+        message_logger.info('No erroneous columns present in file')
 
 
 def display_erroneous_informatioin(erroneous_Column_Information):
@@ -144,7 +146,7 @@ def display_erroneous_informatioin(erroneous_Column_Information):
                     pt.add_row([index, k, k1, v1])
 
         print(pt)
-        output_logger.info('Erroneous columns and their line numbers')
-        output_logger.info(pt)
+        message_logger.info('Erroneous columns and their line numbers')
+        table_logger.info(pt)
     else:
-        output_logger.info('Erroneous columns and their line numbers')
+        message_logger.info('Erroneous columns and their line numbers')
