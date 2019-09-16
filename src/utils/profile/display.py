@@ -148,5 +148,3 @@ def display_erroneous_informatioin(erroneous_Column_Information):
         print(pt)
         message_logger.info('Erroneous columns and their line numbers')
         table_logger.info(pt)
-    else:
-        message_logger.info('Erroneous columns and their line numbers')
