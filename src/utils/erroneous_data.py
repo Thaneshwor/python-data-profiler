@@ -27,17 +27,18 @@ def is_valid_column(column, file_format, datatypes):
 
 
 # function to return erroneous row no. and  erroneous column information
-def get_erroneous_information(file_format, column_datatype_line):
+def get_erroneous_information(file_format, column_datatype_line, max_datatype_of_column):
 
     erroneous_information = {}
     erroneous_row_no = []
 
     for k, v in column_datatype_line.items():
         # need to improve
-        if k in file_format:
+        if k in file_format and len(file_format) > 0:
             actual_datatype = file_format[k]
         else:
-            continue
+            actual_datatype = max_datatype_of_column[k]
+
         for k1, v1 in v.items():
 
             if k1 != actual_datatype and len(v1) > 0:
