@@ -48,7 +48,7 @@ def get_datatype_line_num(df, heading):
     column_datatype_line_no = get_init_dictionary(heading)
 
     for index, row in df.iterrows():
-        index = index+1
+        index = index + 2
         for column in heading:
             column_datatype_line_no = store_line_no_of_datatype(
                 row, column, index, column_datatype_line_no)
