@@ -1,6 +1,10 @@
-
-
-from utils.date import is_date
+from utils.types import (
+    is_date,
+    is_int,
+    is_float,
+    is_boolean,
+    is_time
+)
 
 datatype = {
     'integer': 'integer',
@@ -40,19 +44,19 @@ def get_datatype_line_num(df, heading):
         dict = { year: {string:[1, 3, 4, 6], integer:[
             2, 5]}, value: { string:{4, 5, 6}}}
     '''
+
     column_datatype_line_no = get_init_dictionary(heading)
 
     for index, row in df.iterrows():
-        index = index+1
+        index = index + 2
         for column in heading:
             column_datatype_line_no = store_line_no_of_datatype(
                 row, column, index, column_datatype_line_no)
 
     return column_datatype_line_no
 
+
 # store line no of datatype in each column
-
-
 def store_line_no_of_datatype(row, column_heading, index, column_datatype_line_no):
     ''' Return dictionary (column_datatype_line_no) after adding line number of datatype in each column'''
 
@@ -75,8 +79,6 @@ def store_line_no_of_datatype(row, column_heading, index, column_datatype_line_n
     return column_datatype_line_no
 
 
-# name need to be imporved
-
 def get_init_dictionary(headings):
     ''' Return initialized dictionary for storing line number of of datatype  in each column of dataframe. '''
 
@@ -94,30 +96,24 @@ def get_init_dictionary(headings):
 
 
 def get_datatype(cell_value):
-    ''' Return datatype of input parameter '''
+    '''Return datatype of input parameter in string formate'''
 
     if cell_value == 'NULL':
-        dtype_cell = None
+        return None
+    elif is_date(cell_value):
+        return 'date'
+    elif is_int(cell_value):
+        return 'integer'
+    elif is_float(cell_value):
+        return 'float'
     else:
-        try:
-            if is_date(cell_value):
-                dtype_cell = 'date'
-            else:
-                dtype_cell = 'string'
-                if '.' in cell_value:
-                    dtype_cell = 'float'
-
-                if int(cell_value):
-                    dtype_cell = 'integer'
-
-        except:
-            pass
-    return dtype_cell
+        return 'string'
 
 
 # need to improve
-def get_actual_datatype_of_columns(column_datatype_at_which_line):
-    ''' Return actual datatype of column. '''
+def get_max_datatype(column_datatype_at_which_line):
+    ''' Return Maximum datatype present in column. '''
+
     column_datatype = {}
 
     for k, v in column_datatype_at_which_line.items():
@@ -125,7 +121,7 @@ def get_actual_datatype_of_columns(column_datatype_at_which_line):
         no_of_time_data_type_occure = 0
 
         for k1, v1 in v.items():
-            if(len(v1) > no_of_time_data_type_occure):
+            if(len(v1) > no_of_time_data_type_occure and k1 != 'None'):
                 data_type = k1
                 no_of_time_data_type_occure = len(v1)
             column_datatype[k] = data_type
@@ -136,14 +132,14 @@ def get_actual_datatype_of_columns(column_datatype_at_which_line):
 # return data types of column in  dicitonary
 def datatypes_in_column(dataframe, headings):
     '''
-    Return datatypes of column. 
-
+    Return datatypes of column.
 
     Result:
         {
             'year':['int', 'string'],
             'month':['int', 'string'],
         }
+
     TODO: Something in progress.
     '''
     result = {}
@@ -167,7 +163,6 @@ def get_unique_data_type(df, heading):
 
     for _, row in df.iterrows():
         for column in heading:
-
             result = add_unique_datatype(
                 row, column, result)
 
@@ -176,9 +171,7 @@ def get_unique_data_type(df, heading):
 
 def add_unique_datatype(row, column_heading, column_unique_data_type):
     '''
-
-    Return dicitionary after add datatype if previously not present in input dictionary (column_unique_data_type). 
-
+    Return dicitionary after add datatype if previously not present in input dictionary (column_unique_data_type)
     '''
 
     dtype_cell = None
