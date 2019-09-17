@@ -1,13 +1,15 @@
 import sys
 
+from datetime import datetime
 from prettytable import PrettyTable
 from utils.logger import setup_logger
 
 
 message_logger = setup_logger('output_logger', 'output.log', 'message')
-
 table_logger = setup_logger('table_logger', 'output.log', 'table')
 
+now = datetime.now()
+dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
 def display_columns(headers):
     '''
@@ -21,8 +23,9 @@ def display_columns(headers):
     for column in headers:
         index = index+1
         pt.add_row([index, column])
-
-    print(pt)
+    
+    print(dt_string, '[ INFO ] Columns header in file \n')
+    print(pt, '\n\n')
     message_logger.info('Columns header in file')
     table_logger.info(pt)
 
@@ -31,9 +34,6 @@ def display_columns_datatype(column_unique_data_type):
     '''
     Print all column and datatype available
     '''
-
-    print('*******************************************************************')
-    print('Available columns and their data types \n')
 
     index = 0
     pt = PrettyTable()
@@ -51,7 +51,8 @@ def display_columns_datatype(column_unique_data_type):
 
         pt.add_row([index, k, len(v), temp_v, is_nullable])
 
-    print(pt)
+    print(dt_string, '[ INFO ] Datatypes available in each column \n ')
+    print(pt, '\n\n')
     message_logger.info('Datatypes available in each column ')
     table_logger.info(pt)
 
@@ -60,8 +61,6 @@ def display_columns_actual_datatype(actual_datatype_of_column, file_format):
     '''
     Print Actual datatype of columns
     '''
-
-    print('********************************* Maximum number of data types in column  **********************************')
 
     index = 0
     pt = PrettyTable()
@@ -94,7 +93,8 @@ def display_columns_actual_datatype(actual_datatype_of_column, file_format):
                 pt.add_row([index, '', '', k,
                             actual_datatype_of_column[k], 'No'])
 
-    print(pt)
+    print(dt_string, '[ INFO ] Main datatype of column \n')
+    print(pt, '\n\n')
     message_logger.info('Main datatype of column')
     table_logger.info(pt)
 
@@ -105,7 +105,6 @@ def display_erroneous_columns(erroneousColumn):
     '''
 
     if len(erroneousColumn) > 0:
-        print('********************************* Erroneous Columns  **********************************')
 
         index = 0
         pt = PrettyTable()
@@ -120,7 +119,8 @@ def display_erroneous_columns(erroneousColumn):
 
             pt.add_row([index, k, temp_v])
 
-        print(pt)
+        print(dt_string, '[ INFO ] Erroneous columns present in file \n')
+        print(pt, '\n\n')
         message_logger.info('Erroneous columns present in file')
         table_logger.info(pt)
     else:
@@ -133,8 +133,7 @@ def display_erroneous_informatioin(erroneous_Column_Information):
     '''
 
     if len(erroneous_Column_Information) > 0:
-        print('**********************************Erroneous Column Information*********************************')
-
+    
         index = 0
         pt = PrettyTable()
         pt.field_names = ['Index', 'Column', 'DataType', 'Error At Row Number']
@@ -145,6 +144,7 @@ def display_erroneous_informatioin(erroneous_Column_Information):
                 if k1 != 'None':
                     pt.add_row([index, k, k1, v1])
 
-        print(pt)
+        print(dt_string, '[ INFO ] Erroneous columns and their line numbers \n')
+        print(pt, '\n\n')
         message_logger.info('Erroneous columns and their line numbers')
         table_logger.info(pt)
