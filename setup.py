@@ -9,7 +9,6 @@ with open("README.md", "r") as fh:
 requirements = [
     'numpy==1.17.1',
     'pandas==0.25.1',
-    'pkg-resources==0.0.0',
     'prettytable==0.7.2',
     'python-dateutil==2.8.0',
     'pytz==2019.2',
