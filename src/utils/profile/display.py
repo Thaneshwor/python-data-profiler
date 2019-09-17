@@ -19,15 +19,15 @@ def display_columns(headers):
 
     index = 0
     pt = PrettyTable()
-    pt.field_names = ["index", "Available Column"]
+    pt.field_names = ["Index", "Column"]
 
     for column in headers:
         index = index + 1
         pt.add_row([index, column])
 
-    print("\033[1;32;40m", dt_string, "[ INFO ] Columns header in file \n")
+    print("\033[1;32;40m", dt_string, "[ INFO ] Columns headers \n")
     print(pt, "\n\n")
-    message_logger.info("Columns header in file")
+    message_logger.info("Columns headers")
     table_logger.info(pt)
 
 
@@ -39,11 +39,11 @@ def display_columns_datatype(column_unique_data_type):
     index = 0
     pt = PrettyTable()
     pt.field_names = [
-        "index",
+        "Index",
         "Column",
-        "no. of datatypes available",
-        "datatypes",
-        "is nullable",
+        "No. of datatype",
+        "Datatype",
+        "Nullable",
     ]
 
     for k, v in column_unique_data_type.items():
@@ -57,9 +57,9 @@ def display_columns_datatype(column_unique_data_type):
 
         pt.add_row([index, k, len(v), temp_v, is_nullable])
 
-    print(dt_string, "[ INFO ] Datatypes available in each column \n ")
+    print(dt_string, "[ INFO ] Datatypes in each column \n ")
     print(pt, "\n\n")
-    message_logger.info("Datatypes available in each column ")
+    message_logger.info("Datatypes in each column ")
     table_logger.info(pt)
 
 
@@ -71,7 +71,7 @@ def display_columns_actual_datatype(actual_datatype_of_column, file_format):
     index = 0
     pt = PrettyTable()
     if len(file_format) == 0:
-        pt.field_names = ["Index", "Column", "Maximum Datatype"]
+        pt.field_names = ["Index", "Column", "Dominant Datatype"]
 
         for k, v in actual_datatype_of_column.items():
             index = index + 1
@@ -83,8 +83,8 @@ def display_columns_actual_datatype(actual_datatype_of_column, file_format):
             "Expected Columns",
             "Expected Datatypes",
             "Columns Present",
-            "Maximum Datatype",
-            "isValid",
+            "Dominant Datatype",
+            "Match with format file",
         ]
         is_col_valid = "No"
 
@@ -113,9 +113,9 @@ def display_columns_actual_datatype(actual_datatype_of_column, file_format):
             if k not in file_format:
                 pt.add_row([index, "", "", k, actual_datatype_of_column[k], "No"])
 
-    print(dt_string, "[ INFO ] Main datatype of column \n")
+    print(dt_string, "[ INFO ] Dominant datatype of column \n")
     print(pt, "\n\n")
-    message_logger.info("Main datatype of column")
+    message_logger.info("Dominant datatype of column")
     table_logger.info(pt)
 
 
@@ -128,7 +128,7 @@ def display_erroneous_columns(erroneousColumn):
 
         index = 0
         pt = PrettyTable()
-        pt.field_names = ["Index", "Column", "Available Datatypes"]
+        pt.field_names = ["Index", "Column", "Datatype"]
 
         for k, v in erroneousColumn.items():
             index = index + 1
@@ -139,12 +139,12 @@ def display_erroneous_columns(erroneousColumn):
 
             pt.add_row([index, k, temp_v])
 
-        print(dt_string, "[ INFO ] Erroneous columns present in file \n")
+        print(dt_string, "[ INFO ] Erroneous columns: Columns with more than one datatype \n")
         print(pt, "\n\n")
-        message_logger.info("Erroneous columns present in file")
+        message_logger.info("Erroneous columns: Columns with more than one datatype")
         table_logger.info(pt)
     else:
-        message_logger.info("No erroneous columns present in file")
+        message_logger.info("No erroneous columns present")
 
 
 def display_erroneous_informatioin(erroneous_Column_Information):
@@ -156,7 +156,7 @@ def display_erroneous_informatioin(erroneous_Column_Information):
 
         index = 0
         pt = PrettyTable()
-        pt.field_names = ["Index", "Column", "DataType", "Error At Row Number"]
+        pt.field_names = ["Index", "Column", "DataType", "Line"]
 
         for k, v in erroneous_Column_Information.items():
             for k1, v1 in v.items():

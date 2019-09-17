@@ -71,9 +71,7 @@ def display_data_profile(
     erroneous_Column_Information,
     file_format,
 ):
-    print(
-        "\033[1;33;40m************************************** DATA PROFILE **************************************"
-    )
+
 
     display_columns(column_headings)
     display_columns_datatype(column_unique_data_type)
