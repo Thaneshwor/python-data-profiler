@@ -6,7 +6,7 @@ from utils.logger import setup_logger
 from utils.cleanser import replace_nan
 
 
-error_logger = setup_logger('error_logger', 'error.log', 'message')
+error_logger = setup_logger('error_logger', 'error.log', 'error')
 
 
 def get_dataframe(file_name):
