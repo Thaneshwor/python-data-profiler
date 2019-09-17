@@ -5,146 +5,166 @@ from prettytable import PrettyTable
 from utils.logger import setup_logger
 
 
-message_logger = setup_logger('output_logger', 'output.log', 'message')
-table_logger = setup_logger('table_logger', 'output.log', 'table')
+message_logger = setup_logger("output_logger", "output.log", "message")
+table_logger = setup_logger("table_logger", "output.log", "table")
 
 now = datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
+
 def display_columns(headers):
-    '''
+    """
     Display columns header
-    '''
+    """
 
     index = 0
     pt = PrettyTable()
-    pt.field_names = ['index', 'Available Column']
+    pt.field_names = ["index", "Available Column"]
 
     for column in headers:
-        index = index+1
+        index = index + 1
         pt.add_row([index, column])
-    
-    print(dt_string, '[ INFO ] Columns header in file \n')
-    print(pt, '\n\n')
-    message_logger.info('Columns header in file')
+
+    print("\033[1;32;40m", dt_string, "[ INFO ] Columns header in file \n")
+    print(pt, "\n\n")
+    message_logger.info("Columns header in file")
     table_logger.info(pt)
 
 
 def display_columns_datatype(column_unique_data_type):
-    '''
+    """
     Print all column and datatype available
-    '''
+    """
 
     index = 0
     pt = PrettyTable()
-    pt.field_names = ['index', 'Column',
-                      'no. of datatypes available', 'datatypes', 'is nullable']
+    pt.field_names = [
+        "index",
+        "Column",
+        "no. of datatypes available",
+        "datatypes",
+        "is nullable",
+    ]
 
     for k, v in column_unique_data_type.items():
-        index = index+1
+        index = index + 1
         temp_v = v
         is_nullable = False
 
-        if 'None' in v:
-            temp_v.remove('None')
+        if "None" in v:
+            temp_v.remove("None")
             is_nullable = True
 
         pt.add_row([index, k, len(v), temp_v, is_nullable])
 
-    print(dt_string, '[ INFO ] Datatypes available in each column \n ')
-    print(pt, '\n\n')
-    message_logger.info('Datatypes available in each column ')
+    print(dt_string, "[ INFO ] Datatypes available in each column \n ")
+    print(pt, "\n\n")
+    message_logger.info("Datatypes available in each column ")
     table_logger.info(pt)
 
 
 def display_columns_actual_datatype(actual_datatype_of_column, file_format):
-    '''
+    """
     Print Actual datatype of columns
-    '''
+    """
 
     index = 0
     pt = PrettyTable()
     if len(file_format) == 0:
-        pt.field_names = ['Index', 'Column', 'Maximum Datatype']
+        pt.field_names = ["Index", "Column", "Maximum Datatype"]
 
         for k, v in actual_datatype_of_column.items():
             index = index + 1
             pt.add_row([index, k, v])
 
     else:
-        pt.field_names = ['Index', 'Expected Columns', 'Expected Datatypes',
-                          'Columns Present', 'Maximum Datatype', 'isValid']
-        is_col_valid = 'No'
+        pt.field_names = [
+            "Index",
+            "Expected Columns",
+            "Expected Datatypes",
+            "Columns Present",
+            "Maximum Datatype",
+            "isValid",
+        ]
+        is_col_valid = "No"
 
         for k, v in file_format.items():
             index = index + 1
             if k in actual_datatype_of_column:
-                is_col_valid = 'Yes' if file_format[k] == actual_datatype_of_column[k] else 'No'
+                is_col_valid = (
+                    "Yes" if file_format[k] == actual_datatype_of_column[k] else "No"
+                )
 
-                pt.add_row([index, k, file_format[k], k,
-                            actual_datatype_of_column[k], is_col_valid])
+                pt.add_row(
+                    [
+                        index,
+                        k,
+                        file_format[k],
+                        k,
+                        actual_datatype_of_column[k],
+                        is_col_valid,
+                    ]
+                )
             else:
-                pt.add_row([index, k, file_format[k], '',
-                            '', is_col_valid])
+                pt.add_row([index, k, file_format[k], "", "", is_col_valid])
 
         for k, v in actual_datatype_of_column.items():
             index = index + 1
             if k not in file_format:
-                pt.add_row([index, '', '', k,
-                            actual_datatype_of_column[k], 'No'])
+                pt.add_row([index, "", "", k, actual_datatype_of_column[k], "No"])
 
-    print(dt_string, '[ INFO ] Main datatype of column \n')
-    print(pt, '\n\n')
-    message_logger.info('Main datatype of column')
+    print(dt_string, "[ INFO ] Main datatype of column \n")
+    print(pt, "\n\n")
+    message_logger.info("Main datatype of column")
     table_logger.info(pt)
 
 
 def display_erroneous_columns(erroneousColumn):
-    '''
+    """
     Print erroneous column and datatype available
-    '''
+    """
 
     if len(erroneousColumn) > 0:
 
         index = 0
         pt = PrettyTable()
-        pt.field_names = ['Index', 'Column', 'Available Datatypes']
+        pt.field_names = ["Index", "Column", "Available Datatypes"]
 
         for k, v in erroneousColumn.items():
             index = index + 1
             temp_v = v
 
-            if 'None' in temp_v:
-                temp_v.remove('None')
+            if "None" in temp_v:
+                temp_v.remove("None")
 
             pt.add_row([index, k, temp_v])
 
-        print(dt_string, '[ INFO ] Erroneous columns present in file \n')
-        print(pt, '\n\n')
-        message_logger.info('Erroneous columns present in file')
+        print(dt_string, "[ INFO ] Erroneous columns present in file \n")
+        print(pt, "\n\n")
+        message_logger.info("Erroneous columns present in file")
         table_logger.info(pt)
     else:
-        message_logger.info('No erroneous columns present in file')
+        message_logger.info("No erroneous columns present in file")
 
 
 def display_erroneous_informatioin(erroneous_Column_Information):
-    '''
+    """
     Print erroneous columns and their datatypes and line number
-    '''
+    """
 
     if len(erroneous_Column_Information) > 0:
-    
+
         index = 0
         pt = PrettyTable()
-        pt.field_names = ['Index', 'Column', 'DataType', 'Error At Row Number']
+        pt.field_names = ["Index", "Column", "DataType", "Error At Row Number"]
 
         for k, v in erroneous_Column_Information.items():
             for k1, v1 in v.items():
                 index = index + 1
-                if k1 != 'None':
+                if k1 != "None":
                     pt.add_row([index, k, k1, v1])
 
-        print(dt_string, '[ INFO ] Erroneous columns and their line numbers \n')
-        print(pt, '\n\n')
-        message_logger.info('Erroneous columns and their line numbers')
+        print(dt_string, "[ INFO ] Erroneous columns and their line numbers \n")
+        print(pt, "\n\n")
+        message_logger.info("Erroneous columns and their line numbers")
         table_logger.info(pt)
