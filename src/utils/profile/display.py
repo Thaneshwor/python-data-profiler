@@ -25,8 +25,6 @@ def display_columns(headers):
         index = index + 1
         pt.add_row([index, column])
 
-    print("\033[1;32;40m", dt_string, "[ INFO ] Columns headers \n")
-    print(pt, "\n\n")
     message_logger.info("Columns headers")
     table_logger.info(pt)
 
@@ -38,13 +36,7 @@ def display_columns_datatype(column_unique_data_type):
 
     index = 0
     pt = PrettyTable()
-    pt.field_names = [
-        "Index",
-        "Column",
-        "No. of datatype",
-        "Datatype",
-        "Nullable",
-    ]
+    pt.field_names = ["Index", "Column", "No. of datatype", "Datatype", "Nullable"]
 
     for k, v in column_unique_data_type.items():
         index = index + 1
@@ -57,8 +49,6 @@ def display_columns_datatype(column_unique_data_type):
 
         pt.add_row([index, k, len(v), temp_v, is_nullable])
 
-    print(dt_string, "[ INFO ] Datatypes in each column \n ")
-    print(pt, "\n\n")
     message_logger.info("Datatypes in each column ")
     table_logger.info(pt)
 
@@ -113,8 +103,6 @@ def display_columns_actual_datatype(actual_datatype_of_column, file_format):
             if k not in file_format:
                 pt.add_row([index, "", "", k, actual_datatype_of_column[k], "No"])
 
-    print(dt_string, "[ INFO ] Dominant datatype of column \n")
-    print(pt, "\n\n")
     message_logger.info("Dominant datatype of column")
     table_logger.info(pt)
 
@@ -139,8 +127,6 @@ def display_erroneous_columns(erroneousColumn):
 
             pt.add_row([index, k, temp_v])
 
-        print(dt_string, "[ INFO ] Erroneous columns: Columns with more than one datatype \n")
-        print(pt, "\n\n")
         message_logger.info("Erroneous columns: Columns with more than one datatype")
         table_logger.info(pt)
     else:
@@ -164,7 +150,5 @@ def display_erroneous_informatioin(erroneous_Column_Information):
                 if k1 != "None":
                     pt.add_row([index, k, k1, v1])
 
-        print(dt_string, "[ INFO ] Erroneous columns and their line numbers \n")
-        print(pt, "\n\n")
         message_logger.info("Erroneous columns and their line numbers")
         table_logger.info(pt)
