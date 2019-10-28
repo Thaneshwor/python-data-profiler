@@ -6,11 +6,11 @@ from utils.logger import setup_logger
 from utils.cleanser import replace_nan
 
 
-error_logger = setup_logger('error_logger', 'error.log', 'message')
+error_logger = setup_logger("error_logger", "error.log", "error")
 
 
 def get_dataframe(file_name):
-    ''' Return dataframe of file after reading it. '''
+    """ Return dataframe of file after reading it. """
 
     fs = find_seperator(file_name)
 
@@ -23,10 +23,10 @@ def get_dataframe(file_name):
 
 
 def find_seperator(file_name):
-    ''' Return seperator of file.'''
+    """ Return seperator of file."""
 
     try:
-        with open(file_name, 'r') as myCsvfile:
+        with open(file_name, "r") as myCsvfile:
 
             header = myCsvfile.readline()
             if header.find(";") != -1:
@@ -39,22 +39,23 @@ def find_seperator(file_name):
                 return "|"
 
     except Exception as e:
-        print('error occurre---------------------', e)
+        print("\033[1;31;40m", e)
         error_logger.error(e)
+        raise e
 
-    return 'fwf'
+    return "fwf"
 
 
 def get_dict_from_json(file_name):
-    '''
+    """
     Return dictionary after loading data from json file.
-    '''
+    """
 
     try:
         with open(file_name) as f:
             return json.load(f)
     except Exception as e:
-        print('Cannot open file: ', file_name)
+        print("\033[1;31;40m No such file or directory:", file_name, "\n\n")
         error_logger.error(e)
 
     return {}
